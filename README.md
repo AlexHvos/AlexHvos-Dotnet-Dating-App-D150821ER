@@ -1,2 +1,1 @@
-setting up coding environment:
-vscode, angular cli, dotnet, nodejs, postman
+Added student assets folder which has resources needed to build the project
