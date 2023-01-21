@@ -1,3 +1,3 @@
-In terminal type dotnet dev-certs https --trust to make the browser trust the certificate provided by the dotnet sdk so the api can work
+Create new folder named Entities and inside it create new c# class named AppUser
 
-In DatingApp > API > Properties > appsetting.Development.json change microsoft from warning to information to show more details when using commands
+Inside the class add public int Id & public string UserName properties
