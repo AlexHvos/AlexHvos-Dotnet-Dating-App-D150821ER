@@ -1,1 +1,2 @@
-# AlexHvos-Dotnet-Dating-App-D150821ER
+setting up coding environment:
+vscode, angular cli, dotnet, nodejs, postman
