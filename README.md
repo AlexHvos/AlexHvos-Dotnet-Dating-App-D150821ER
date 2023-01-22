@@ -1,15 +1,7 @@
-Inside the controllers folder create new api controller named userscontroller
-Go to UsersController class and add the following:
-private readonly DataContext _context;
-        public UsersController(DataContext context) {
-            _context = context;
-
-
-        }
-        [HttpGet]
-        public ActionResult<IEnumerable<AppUser>> GetUsers()
+Next you want to make the GetUsers/GetUser methods asynchronous by doing the following:
+public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-            var users = _context.Users.ToList();
+            var users = await _context.Users.ToListAsync();
             return users;
         }
 
@@ -17,10 +9,10 @@ private readonly DataContext _context;
         [HttpGet("{id}")]
 
 
-        public ActionResult<AppUser> GetUser(int id)
+        public async Task<ActionResult<AppUser>> GetUser(int id)
         {
-            var user = _context.Users.Find(id);
+            var user = await _context.Users.FindAsync(id);
             return user;
         }
 
-Now when you use the api it can show the list of users or a specific user by adding api/users or api/users/’id number’ in the address of api page
+
