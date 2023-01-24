@@ -1,9 +1,11 @@
-Next we’ll head back to the api folder and then open startup.cs and add the following code inside configureservices method:
-services.AddCors();
+Let’s go to client/src/app and open app.component.html and add the following code:
+<h1>{{title}}</h1>
 
-Then you need to add the following code to configure method(make the following is between app.UseRouting and app.UseAuthorization):
-app.UseCors(policy =>
-            policy.AllowAnyHeader()
-            .AllowAnyMethod()
-            .WithOrigins("http://localhost:4200")
-            );
+
+<ul>
+  <li *ngFor="let user of users">
+    {{user.id}} - {{user.userName}}
+  </li>
+</ul>
+
+This will show the list of users in the browser
