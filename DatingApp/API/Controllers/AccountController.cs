@@ -1,5 +1,15 @@
-Next up make a new controller to handle login/register named AccountController and add the following code:
-public class AccountController : BaseApiController
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
+using API.Data;
+using API.Entities;
+using Microsoft.AspNetCore.Mvc;
+
+namespace API.Controllers
+{
+    public class AccountController : BaseApiController
     {
         private readonly DataContext _context;
         public AccountController(DataContext context)
@@ -25,3 +35,4 @@ public class AccountController : BaseApiController
             return user;
         }
     }
+}
