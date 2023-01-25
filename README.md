@@ -1,20 +1,15 @@
-Next up make a new controller to handle login/register named AccountController and add the following code:
-public class AccountController : BaseApiController
-    {
-        private readonly DataContext _context;
-        public AccountController(DataContext context)
-        {
-            _context = context;
-        }
+Next up let’s try to use some of the postman tests, for example post register, but an error occurs, so now we have to change things up,
+Let’s open a new folder in API called DTOs, and inside create a new class named RegisterDto with two public string properties: Username and Password
 
-        [HttpPost("register")]
-        public async Task<ActionResult<AppUser>> Register(string username, string password) 
+Then head back to accountcontroller and edit the following in the Register method:
+
+public async Task<ActionResult<AppUser>> Register(RegisterDto registerDto) 
         {
             using var hmac = new HMACSHA512();
 
             var user = new AppUser {
-                UserName = username,
-                PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password)),
+                UserName = registerDto.Username.ToLower(),
+                PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(registerDto.Password)),
                 PasswordSalt = hmac.Key
             };
 
@@ -24,4 +19,16 @@ public class AccountController : BaseApiController
             
             return user;
         }
-    }
+
+Next add another method after register:
+
+private async Task<bool> UserExists(string username)
+        {
+            return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
+        }
+
+And now we use this method at the start of the register method:
+
+if(await UserExists(registerDto.Username)) return BadRequest("Username is taken");
+
+This basically works but its not perfect so next we’ll add validation
