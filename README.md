@@ -1,35 +1,19 @@
-Next let's change TokenService so that it actually creates JWTs, first open the nuget gallery and install System.IdentityModel.Token.Jwt
+Next let's add the token service to the accountcontroller class in the following way:
 
-Now add the following code the TokenService class:
-
-private readonly SymmetricSecurityKey _key;
-        public TokenService(IConfiguration config)
+private readonly ITokenService _tokenService;
+        public AccountController(DataContext context, ITokenService tokenService)
         {
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+            _tokenService = tokenService;
+            _context = context;
         }
-        public string CreateToken(AppUser user)
-        {
-            // adding claims to token:
-            var claims = new List<Claim> {
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+
+now create a new dto named UserDTO class with two public string properties: Username and Token
+and implement it into the register and login methods in accountcontroller by changing what the methods return:
+
+return new UserDTO {
+                Username = user.UserName,
+                Token = _tokenService.CreateToken(user)
             };
-
-            // adding credentials to token with the key and an algorithm
-            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-
-            // describing what the token is going to look like
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
-                SigningCredentials = creds
-            };
-
-            // the token handler will create the token using the descriptor
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            // create token
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            //return token
-            return tokenHandler.WriteToken(token);
+        
+and then go to appsettings.Development.json and add the following:
+"TokenKey": "super secret unguessable key [should be 16-32 unguessable text]",        

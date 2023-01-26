@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4KV5olPkGPgrDrsKvSm5PcioFN7HmdLhQNFEQoGGzPN+nTFIXn+n1c5zc0ijxYuxHlE1X6KTtlavviStoq0bDg==",
+  "dgSpecHash": "5yqTgzKRHmPu5g84pRBxce158CQmVu+m26c+mrof3yrOTJyELYGVXWDyYOLcMH3ZMARskxbppoEKN122EnQ22w==",
   "success": true,
-  "projectFilePath": "c:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexk\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -87,8 +87,7 @@
     "C:\\Users\\alexk\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\alexk\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\alexk\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\alexk\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+    "C:\\Users\\alexk\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
