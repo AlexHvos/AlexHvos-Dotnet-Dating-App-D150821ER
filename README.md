@@ -1,13 +1,35 @@
-Next up adding authentication with JSON Web Token(JWT)
+Next let's change TokenService so that it actually creates JWTs, first open the nuget gallery and install System.IdentityModel.Token.Jwt
 
-Create a new folder called interfaces, and inside a new file call ITokenService with one method:
+Now add the following code the TokenService class:
 
-string CreateToken(AppUser user);
+private readonly SymmetricSecurityKey _key;
+        public TokenService(IConfiguration config)
+        {
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
+        }
+        public string CreateToken(AppUser user)
+        {
+            // adding claims to token:
+            var claims = new List<Claim> {
+                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+            };
 
-And then create a new folder named services, and inside a new file called TokenService which implement the interface we just made 
+            // adding credentials to token with the key and an algorithm
+            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
-Now we need to update Startup.cs so that we can use this service in order to create JWTs
+            // describing what the token is going to look like
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(7),
+                SigningCredentials = creds
+            };
 
-Inside the ConfigureServices method add the following code:
+            // the token handler will create the token using the descriptor
+            var tokenHandler = new JwtSecurityTokenHandler();
 
-services.AddScoped<ITokenService, TokenService>();
+            // create token
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            //return token
+            return tokenHandler.WriteToken(token);
