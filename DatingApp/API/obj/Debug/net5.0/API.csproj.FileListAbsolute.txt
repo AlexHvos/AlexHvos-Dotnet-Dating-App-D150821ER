@@ -87,5 +87,8 @@ C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\
 C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\alexk\Dotnet dating app\AlexHvos-Dotnet-Dating-App-D150821ER\DatingApp\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
