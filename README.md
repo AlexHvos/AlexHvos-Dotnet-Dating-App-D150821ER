@@ -1,20 +1,16 @@
-Next let's start working on the login form:
-go to app.module.ts and inside imports add FormsModule
+Next let's create a new folder in client/app called services and inside a new service called account using the following command:
+ng g s account
 
-Then let's go to nav.component.ts and add the following to OnInit:
-model: any = {};
+Then go to account.service.ts and inside the class add the following code:
+  baseUrl = 'https://localhost:5001/api/';
 
-And add a new function:
-login() {
-    console.log(this.model);
+  constructor(private http: HttpClient) { }
+
+  login(model: any): Observable<any> {
+    return this.http.post(this.baseUrl + 'account/login', model);
   }
 
-Then let's turn the login form into an angular form by doing the following in nav.component.html:
-            <form class="form-inline mt-2 mt-md-0" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-                <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text" placeholder="Username">
-                <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password" placeholder="Password">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-            </form>
+
 
 
 
