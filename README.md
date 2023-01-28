@@ -1,13 +1,20 @@
-Next let's create a new folder in client/app called services and inside a new service called account using the following command:
-ng g s account
+Next let's inject the account service into nav.component.ts and add some login logic:
+export class NavComponent implements OnInit {
+  loggenIn:boolean = false;
+  model: any = {};
 
-Then go to account.service.ts and inside the class add the following code:
-  baseUrl = 'https://localhost:5001/api/';
+  constructor(private accountService: AccountService) { }
 
-  constructor(private http: HttpClient) { }
+  ngOnInit(): void {
+  }
 
-  login(model: any): Observable<any> {
-    return this.http.post(this.baseUrl + 'account/login', model);
+  login() {
+    this.accountService.login(this.model).subscribe(response => {
+      console.log(response);
+      this.loggenIn = true;
+    }, error => {
+      console.log(error);
+    })
   }
 
 
