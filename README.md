@@ -1,44 +1,52 @@
-Next let's work on a home page, so open a terminal in client, and create a home component:
-ng g c home --skip-tests
+Next let's work on a register form, so open a terminal in client, and create a register component:
+ng g c register --skip-tests
 
-
-Then inside home.component.ts add the following:
-  registerMode = false;
-
+let's start by defining some methods register.component.ts just for show(for now):
+export class RegisterComponent implements OnInit {
+  model:any = {};
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  registerToggle() {
-    this.registerMode = !this.registerMode;
+  register(form:any) {
+    console.log(this.model);
   }
 
+  cancel() {
+    console.log("cancelled");
+  }
+}
 
-Then home.component.html:
-<div class="container mt-5">
-    <div *ngIf="!registerMode" style="text-align: center">
-        <h1>Find Your Match</h1>
-        <p class="lead">Come on in to view your matched... all you need to is signup!</p>
-        <div class="text-center">
-            <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
-            <button class="btn btn-info btn-lg mr-2">Learn More</button>
-        </div>
+
+
+Then let's work on the register form display in register.component.html:
+<form (ngSubmit)="register(registerForm)" #registerForm="ngForm" autocomplete="off">
+    <h2 class="text-center text-primary">Sign up</h2>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username">
     </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password">
+    </div>
+
+    <div class="form-group text center">
+        <button class="btn btn-success mr-2" type="submit">
+            Register
+        </button>
+        <button class="btn btn-default mr-2" type="button">
+            Cancel
+        </button>
+    </div>
+</form>
+
+
+And also add it to home.component.html:
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content=center">
             <div class="col-4">
-                <p>Register Form Goes Here</p>
+                <p><app-register></app-register></p>
             </div>
         </div>
     </div>
-</div>
-
-
-and finally display this inside app.component.html instead of a user list:
-<app-nav></app-nav>
-<div class="container" style="margin-top: 100px;">
-  <app-home></app-home>
-</div>
-
-so now we have a basic home page
