@@ -1,52 +1,25 @@
-Next let's work on a register form, so open a terminal in client, and create a register component:
-ng g c register --skip-tests
+Let's practice some parent and child component communication, first off let's take the getusers method from app.component.ts and move it to home.component.ts, let's also register some new users for testing with postman
+and jump into userscontroller and above the getusers change authorize to allowanonymous
 
-let's start by defining some methods register.component.ts just for show(for now):
-export class RegisterComponent implements OnInit {
-  model:any = {};
-  constructor() { }
+let's add some stuff to home.component.ts:
+  registerMode = false;
+  users: any;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
-  register(form:any) {
-    console.log(this.model);
-  }
+so that we can use the users data in home and register components
 
-  cancel() {
-    console.log("cancelled");
-  }
-}
+then add the following to register.component.ts under model:any; :
+  @Input() usersFromHomeComponent: any;
+and also add the following to register.component.html:
 
+    <select class="form-control">
+        <option *ngFor="let user of usersFromHomeComponent" [value]="user.userName">{{user.userName}}</option>
+    </select>
 
-
-Then let's work on the register form display in register.component.html:
-<form (ngSubmit)="register(registerForm)" #registerForm="ngForm" autocomplete="off">
-    <h2 class="text-center text-primary">Sign up</h2>
-    <hr>
-    <div class="form-group">
-        <input type="text" class="form-control" name="username" [(ngModel)]="model.username" placeholder="Username">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" name="password" [(ngModel)]="model.password" placeholder="Password">
-    </div>
-
-    <div class="form-group text center">
-        <button class="btn btn-success mr-2" type="submit">
-            Register
-        </button>
-        <button class="btn btn-default mr-2" type="button">
-            Cancel
-        </button>
-    </div>
-</form>
-
-
-And also add it to home.component.html:
-    <div *ngIf="registerMode" class="container">
-        <div class="row justify-content=center">
-            <div class="col-4">
-                <p><app-register></app-register></p>
-            </div>
-        </div>
-    </div>
+and finally implement in home.component.html:
+<p><app-register [usersFromHomeComponent]="users"></app-register></p>

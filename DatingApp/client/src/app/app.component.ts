@@ -21,20 +21,6 @@ export class AppComponent {
     this.setCurrentUser();
   }
 
-  getUsers(){
-    this.http.get('https://localhost:5001/api/users').subscribe(
-      response => {
-        this.users = response;
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
-        console.log('Finished');
-      }
-    )
-  }
-
   setCurrentUser() {
     const userFromLS = localStorage.getItem('user');
     const user: User = userFromLS ? JSON.parse(userFromLS) : null; 
