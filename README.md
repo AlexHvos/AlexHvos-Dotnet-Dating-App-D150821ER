@@ -1,25 +1,20 @@
-Let's practice some parent and child component communication, first off let's take the getusers method from app.component.ts and move it to home.component.ts, let's also register some new users for testing with postman
-and jump into userscontroller and above the getusers change authorize to allowanonymous
+Next let's make sure the cancel register works, so let's add an output for it in register.component.ts:
+@Output() cancelRegister = new EventEmitter<boolean>();
+and also a cancel method:
+cancel() {
+    this.cancelRegister.emit(false);
+}
 
-let's add some stuff to home.component.ts:
-  registerMode = false;
-  users: any;
+Then add this functionality to the cancel button in register.component.html:
+        <button (click)="cancel()" class="btn btn-default mr-2" type="button">
+            Cancel
+        </button>
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-    this.getUsers();
+And use this in the parent(home component), so in home.component.ts add a new event:
+  cancelRegisterMode(event: boolean) {
+    this.registerMode = event;
   }
+}
 
-so that we can use the users data in home and register components
-
-then add the following to register.component.ts under model:any; :
-  @Input() usersFromHomeComponent: any;
-and also add the following to register.component.html:
-
-    <select class="form-control">
-        <option *ngFor="let user of usersFromHomeComponent" [value]="user.userName">{{user.userName}}</option>
-    </select>
-
-and finally implement in home.component.html:
-<p><app-register [usersFromHomeComponent]="users"></app-register></p>
+And use the event in home.component.html:
+<p><app-register [usersFromHomeComponent]="users" (cancelRegister)="cancelRegisterMode($event)"></app-register></p>
