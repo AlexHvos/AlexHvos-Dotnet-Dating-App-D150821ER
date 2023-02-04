@@ -1,33 +1,33 @@
-Next let's add a toast service for notifications, open a terminal in client and type in:
-npm i ngx-toastr@14.3.0
+Now lets add route guards so that only a logged in user can access certain routes, first open a ne folder named guards and open a terminal and type in:
+ng g guard auth
 
-Now let's add the imports, go to angular.json and go to styles:
-"styles": [
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/ngx-toastr/toastr.css",
-              "src/styles.css"
-            ],
+Then go to the new file auth.guard.ts and change the following:
+constructor(
+    private accountService: AccountService,
+    private toastr: ToastrService
+  ) {}
 
-Then add it to app.module.ts and add it to imports:
-ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right'
-    })
-
-Then implement it in nav.component.ts:
-add it in the ctor arguments:
-private toastr: ToastrService
-
-and add it to login:
-  login() {
-    this.accountService.login(this.model).subscribe(response => {
-      this.router.navigateByUrl('/members');
-      console.log(response);
-    }, error => {
-      this.toastr.error(error.error);
-      console.log(error);
-    })
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> {
+    return this.accountService.currentUser$.pipe(
+      map(user => {
+        if (user) return true;
+        this.toastr.error('You shall not pass!');
+        return false;
+      })
+    )
   }
 
-now if an error occurs during login a message will pop up, but its not perfect so we'll fix it later
+Now let's use this in app-routing.module.ts, add the following to all routes which require a user to be logged in:
+canActivate: [AuthGuard]
+
+and finally change the error display in nav.component.ts so it works properly:
+    error: ({error}) => {
+      if(!(error.errors && typeof error.errors === 'object')) {
+        return this.toastr.error(error) as any;
+      }
+      for (const key in error.errors) {
+        if (error.errors.hasOwnProperty(key)) {
+          this.toastr.error(error.errors[key]);
+        }
