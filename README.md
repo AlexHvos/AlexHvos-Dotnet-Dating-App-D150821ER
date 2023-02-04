@@ -1,15 +1,20 @@
-Next let's add the nav links, go to nav.component.html and change the following:
-        <a class="navbar-brand" routerLink="/">Dating App</a>
+The routes are now working but not entirely as expected, we need change the routes when a user logs in/out,
+so go to nav.component.ts 
 
-            <ul *ngIf="currentUser$ | async" class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/members">Matches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/lists">Lists</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/messages">Messages</a>
-            </ul>
+Add the following to the ctor arguments:
+private router: Router
 
-now when we click on the different options on the navbar it will display the correct route
+Add routing to both login and logout methods:
+  login() {
+    this.accountService.login(this.model).subscribe(response => {
+      this.router.navigateByUrl('/members');
+      console.log(response);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  logout() {
+    this.accountService.logout();
+    this.router.navigateByUrl('/');
+  }
