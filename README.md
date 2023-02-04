@@ -1,35 +1,15 @@
-Time to start working on the router:
-let's start with creating some components:
-Lists, Messages and a members folder which contains the components Member-list and Member-detail
+Next let's add the nav links, go to nav.component.html and change the following:
+        <a class="navbar-brand" routerLink="/">Dating App</a>
 
-then we need to specify where we show them, go to app-routing.model.ts and add some routes:
-const routes: Routes = [
-  {
-    path: '', //localhost:4200
-    component: HomeComponent,
-    pathMatch: 'full'
-  },
-  {
-    path: 'members', //localhost:4200/members
-    component: MemberListComponent
-  },
-  {
-    path: 'members/:id', //localhost:4200/members/1
-    component: MemberDetailComponent
-  },
-  {
-    path: 'lists',
-    component: ListsComponent
-  },
-  {
-    path: 'messages',
-    component: MessagesComponent
-  },
-  {
-    path: '**', //localhost:4200/anything
-    component: HomeComponent,
-    pathMatch: 'full'
-  }
-];
+            <ul *ngIf="currentUser$ | async" class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/members">Matches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/lists">Lists</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/messages">Messages</a>
+            </ul>
 
-Then go to app.component.html and chagne app-home to router-outlet so that we see the routes in the navbar
+now when we click on the different options on the navbar it will display the correct route
