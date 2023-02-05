@@ -1,19 +1,16 @@
-Next let's work on the exception middleware, create two new folders in api named Errors & Middleware,
-inside Errors create a class named ApiException with the following code:
-    public class ApiException
-    {
-        public ApiException(int statusCode, string message = null, string details = null) 
-        {
-            StatusCode = statusCode;
-            Message = message;
-            Details = details;
-        }
-        public int StatusCode { get; set; }
-        public string Message { get; set; }
-        public string Details { get; set; }
-    }
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
+using API.Errors;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-and inside Middleware create a class named EceptionMiddleware with the following code:
+namespace API.Middleware
+{
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate next;
@@ -54,7 +51,4 @@ and inside Middleware create a class named EceptionMiddleware with the following
             }
         }
     }
-
-and finally use it in startup.cs by adding it at the beginning of the configure method:
-app.UseMiddleware<ExceptionMiddleware>();
-
+}
