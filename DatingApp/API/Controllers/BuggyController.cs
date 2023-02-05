@@ -1,5 +1,3 @@
-Next let's work on error handling, first by creating a new controller which handle different types of errors,
-create a file named BuggyController with the following code:
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,6 +48,3 @@ namespace API.Controllers
 
     }
 }
-
-and also add a new requirement in the RegisterDto:
-[StringLength(8, MinimumLength = 4, ErrorMessage = "You must specify password between 4 and 8 characters")]
