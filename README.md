@@ -1,1 +1,1 @@
-Let's start expanding our api, first let's more user info, and create a new class named photo inside entities
+Next let's add a date time extension, create a static class named DateTimeExtensions and then it in appuser
