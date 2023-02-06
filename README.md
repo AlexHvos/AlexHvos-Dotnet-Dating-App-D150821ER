@@ -1,1 +1,1 @@
-Next let's make a server error page, inside errors create server-error component and add it to the routes accordingly
+Let's start expanding our api, first let's more user info, and create a new class named photo inside entities
