@@ -1,2 +1,3 @@
-Next let's create a new component to test errors for the global error handling feature in angular
+Next let's create an interceptor to golabally handle errors in angular, create a new folder named interceptors,
+and inside create error.interceptor.ts
 
