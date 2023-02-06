@@ -1,1 +1,1 @@
-Next we'll make sure that appuser and photos are related, do a migration to update the database accordingly
+Now let's get the new data and put it in our db, create seed class in data folder and run SeedData in the program.cs file
