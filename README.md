@@ -1,1 +1,1 @@
-Now let's make use of the repository by udating userscontroller and userrepository
+Next let's add some dtos, MemberDto and PhotoDto
