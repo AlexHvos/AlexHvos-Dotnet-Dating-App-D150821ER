@@ -1,1 +1,1 @@
-Next let's add some dtos, MemberDto and PhotoDto
+Next let's add automapper via the nuget gallery, then creating a helpers folder and inside AutoMapperProfiles.cs
