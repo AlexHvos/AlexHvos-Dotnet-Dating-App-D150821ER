@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\alexk\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\alexk\\Dotnet dating app\\AlexHvos-Dotnet-Dating-App-D150821ER\\DatingApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alexk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,6 +21,7 @@
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -76,12 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -90,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
