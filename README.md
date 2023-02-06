@@ -1,1 +1,1 @@
-Next let's add a date time extension, create a static class named DateTimeExtensions and then it in appuser
+Next we'll make sure that appuser and photos are related, do a migration to update the database accordingly
