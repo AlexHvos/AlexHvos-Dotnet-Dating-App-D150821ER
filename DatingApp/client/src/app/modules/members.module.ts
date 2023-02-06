@@ -4,6 +4,7 @@ import { MemberListComponent } from '../members/member-list/member-list.componen
 import { MemberDetailComponent } from '../members/member-detail/member-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MemberCardComponent } from '../members/member-card/member-card.component';
+import { CoreModule } from './core.module';
 
 const routes: Routes = [
   {path:'', component: MemberListComponent, pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
     MemberCardComponent
   ],
   imports: [
+    CoreModule,
     CommonModule,
     RouterModule.forChild(routes)
   ],
