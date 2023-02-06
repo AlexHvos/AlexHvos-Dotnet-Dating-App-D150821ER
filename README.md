@@ -1,1 +1,4 @@
-Next let's actually get the new data in the database by first dropping our db, and then run dotnet and check to see if the data is in the new db and also update userscontroller with controller level authentication
+Next let's create a repository, by making an interface and then implementing it:
+    create and go to Interfaces/IUserRepository.cs
+    create and go to Data/UserRepository.cs
+    add the repository as service, go to ApplicationServiceExtensions.cs
