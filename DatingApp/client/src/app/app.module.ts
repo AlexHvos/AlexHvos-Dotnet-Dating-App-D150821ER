@@ -14,6 +14,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { CoreModule } from './modules/core.module';
 import { MembersModule } from './modules/members.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { NotFoundComponent } from './errors/not-found/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
     RegisterComponent,
     ListsComponent,
     MessagesComponent,
-    TestErrorsComponent
+    TestErrorsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
