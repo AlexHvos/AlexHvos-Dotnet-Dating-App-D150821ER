@@ -13,6 +13,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { CoreModule } from './modules/core.module';
 import { MembersModule } from './modules/members.module';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MembersModule } from './modules/members.module';
     HomeComponent,
     RegisterComponent,
     ListsComponent,
-    MessagesComponent
+    MessagesComponent,
+    TestErrorsComponent
   ],
   imports: [
     BrowserModule,
